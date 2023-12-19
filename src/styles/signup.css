@@ -1,0 +1,48 @@
+/* ---------- SIGN IN ---------- */
+.sign-up__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+  }
+  
+  
+  .sign-up__wrapper form {
+    width: 30vw;
+    height: 75vh;
+    animation: showSignUpForm 1s;
+  }
+  
+  @keyframes showSignUpForm {
+    0%,
+    30% {
+      transform: translate(0, -150%);
+    }
+    70%,
+    90% {
+      transform: translate(0, 1rem);
+    }
+    80%,
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  
+  .signupbtn button{
+    background-color: pink;
+    border-color: pink;
+    color: black
+  }
+  .signupbtn button:hover{
+    background-color: #cb416b;
+    border-color: #cb416b;
+    color: black
+  }
+  
+  

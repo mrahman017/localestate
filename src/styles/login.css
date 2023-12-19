@@ -1,0 +1,47 @@
+/* ---------- SIGN IN ---------- */
+.sign-in__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+}
+
+
+.sign-in__wrapper form {
+  width: 30vw;
+  height: 60vh;
+  animation: showSignInForm 1s;
+}
+
+@keyframes showSignInForm {
+  0%,
+  30% {
+    transform: translate(0, -150%);
+  }
+  70%,
+  90% {
+    transform: translate(0, 1rem);
+  }
+  80%,
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.loginbtn button{
+  background-color: pink;
+  border-color: pink;
+  color: black
+}
+.loginbtn button:hover{
+  background-color: #cb416b;
+  border-color: #cb416b;
+  color: black
+}
+

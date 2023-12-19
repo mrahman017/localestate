@@ -1,0 +1,109 @@
+.search-bg {
+
+    background-image: url("../images/1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.search-content {
+    background-color: hsla(224, 34%, 13%, 0.6);
+    padding-block: 180px;
+    padding-inline-start: 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    place-content: start center;
+    text-align: left;
+}
+
+.search-title h1 {
+    max-width: 16ch;
+    margin-inline: auto;
+    line-height: 1.5;
+    margin-block-end: 20px;
+}
+
+.search-title .nyc {
+    display: inline-block;
+    color: #cb416b;
+}
+
+.search-form-wrapper {
+    background-color: #ffcfcf;
+    margin-block-start: -100px;
+    width: calc(100% - 80px);
+    margin-inline: auto;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.form-tab {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 30px;
+    padding: 16px;
+    border-block-end: 1px solid;
+    display: flex;
+    justify-content: center;
+}
+
+.form-tab Button {
+    padding: 12px 24px;
+    background-color: pink;
+    border-color: pink;
+    color: black;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: 0.25s ease;
+}
+
+.form-tab button:hover {
+    background-color: #cb416b;
+    border-color: #cb416b;
+    color: black
+}
+
+.search-form {
+    display: flex;
+    gap: 75px;
+    padding: 25px;
+}
+
+.search-form Button {
+    padding: 12px 24px;
+    background-color: #cb416b;
+    border-color: #cb416b;
+    color: black;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: 0.25s ease;
+}
+
+.search-form button:hover {
+    background-color: pink;
+    border-color: pink;
+    color: black
+}
+
+.search-form .input-wrapper {
+    position: relative;
+}
+
+.search-form .input-label {
+    font-weight: 500;
+    margin-block-end: 10px;
+}
+
+.search-form :is(.input-field, .dropdown-list) {
+    min-height: 40px;
+    border: 1px solid hsl(220, 13%, 91%);
+    border-radius: 4px;
+    outline: none;
+    transition: 0.25s ease;
+}
+
+.headings {
+    padding: 20px;
+}

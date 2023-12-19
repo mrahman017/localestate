@@ -1,0 +1,15 @@
+/* Listing.css */
+
+/* Custom style for the Carousel */
+.carousel { 
+    border-radius: 20px; 
+    overflow: hidden;
+    height: 100%;
+}
+
+.carousel-img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
