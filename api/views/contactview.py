@@ -19,3 +19,5 @@ def submit_form():
             return jsonify({'message': 'Form data saved successfully'}), 200
         else:
             return jsonify({'error': 'Incomplete form data'}), 400
+
+

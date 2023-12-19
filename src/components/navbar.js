@@ -6,6 +6,7 @@ import AuthButton from './AuthButton';
 
 function Navigation() {
 
+
     const [isHover, setIsHover] = useState(false);
 
     const handleMouseEnter = () => {
@@ -19,6 +20,7 @@ function Navigation() {
     const boxStyle = {
         backgroundColor: isHover ? '#cb416b' : 'pink',
      };
+
 
   return (
     <>
@@ -37,6 +39,10 @@ function Navigation() {
                     <Nav.Item>
                         <Nav.Link className="font-weight-bold px-4" href="/">Home</Nav.Link>
                     </Nav.Item>
+
+                    {/* <Nav.Item>
+                        <Nav.Link className="font-weight-bold px-4" href="/profile">Profile</Nav.Link>
+                    </Nav.Item> */}
                     
                     <Nav.Item>
                         <AuthButton />

@@ -9,6 +9,7 @@ import Listing from "./pages/listing.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { auth } from "./firbase.js"; 
 import { onAuthStateChanged } from "firebase/auth";
+import Profile from "./pages/profile.js";
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
           />
         <Route path="/contact" element={<Contact />} />
         <Route path="/listing" element={<Listing />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );

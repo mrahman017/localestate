@@ -28,10 +28,25 @@ app.register_blueprint(contact_bp)
 
 
 
-# save the properties to the database
+# properties to the database
 from views.propertyview import property_bp
 # Register blueprint for contact routes
 app.register_blueprint(property_bp)
+
+
+#  user to the database
+from views.userview import user_bp
+# Register blueprint for contact routes
+app.register_blueprint(user_bp)
+
+
+
+#  favorite to the database
+from views.favoritesview import favorite_bp
+# Register blueprint for contact routes
+app.register_blueprint(favorite_bp)
+
+
 
 with app.app_context():
     db.create_all()

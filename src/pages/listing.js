@@ -3,12 +3,20 @@ import { useLocation } from 'react-router-dom';
 import { Carousel } from 'react-bootstrap';
 import '../styles/listing.css';
 import temp from '../images/temp.jpg';
-
+import { auth } from "../firbase";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useState} from "react";
 
 function Listing() {
+
+    const user = auth.currentUser;
+    const firbaseuid = user.uid;
+
+    const [addedToFavorites, setAddedToFavorites] = useState(false);
+
+
     const location = useLocation();
     const property = location.state && location.state.propertyData;
 
@@ -44,9 +52,44 @@ function Listing() {
     });
 
     const latlon = property.location.address.coordinate.lat + "," + property.location.address.coordinate.lon
-    console.log(latlon)
+    // console.log(latlon)
     const streetViewURL = 'https://www.google.com/maps/embed/v1/streetview?key=AIzaSyADzubPPn3igzQgwRqy2aIZZSmfBMNcuXs&location=' + latlon
 
+    const handleAddToFavorites = async (property) => {
+        if(!addedToFavorites){
+            try {
+
+                console.log(property)
+                const response = await fetch('http://localhost:5000/addfavorite', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        firebaseuid: firbaseuid,
+                        property: property, 
+                    }),
+                });
+    
+                if (response.ok) {
+                    setAddedToFavorites(true);
+                    console.log('Property added to favorites successfully');
+                } else {
+                    console.error('Failed to add property to favorites');
+                }
+            } catch (error) {
+                console.error('Error adding property to favorites:', error);
+            }
+        }
+        else{
+            console.log("already added to favorite")
+        }
+        
+    };
+
+    const onClickHandle = () =>{
+        handleAddToFavorites(property)
+    }
 
     return (
         <>
@@ -108,37 +151,41 @@ function Listing() {
                             <h3>Listed on</h3>
                             <h4>{property.list_date} </h4>
                         </div>
-                    
-                </Col>
-            </Row>
-            <Row className='pt-5 pb-5'>
-                <Col>
-                    <div className="">
-                        <h3>Description</h3>
-                        {Object.entries(transformedDescription).map(([key, value]) => (
-                            <p key={key}><strong>{key}:</strong> {value}</p>
-                        ))}
-                    </div>
-                </Col>
 
-                <Col>
+                    </Col>
+                </Row>
+                <Row className='pt-5 pb-5'>
+                    <Col>
+                        <div className="">
+                            <h3>Description</h3>
+                            {Object.entries(transformedDescription).map(([key, value]) => (
+                                <p key={key}><strong>{key}:</strong> {value}</p>
+                            ))}
+                        </div>
 
+                        <div >
+                                <button className="btn btn-primary" onClick={onClickHandle}>
+                                    Add to Favorites
+                                </button>
+                        </div>
+                    </Col>
 
-                    <iframe
-                        title="Google Map Street View"
-                        src={streetViewURL}
-                        width="900"
-                        height="500"
-                        frameborder="0"
-                        style={{ border: 0 }}
-                        referrerpolicy="no-referrer-when-downgrade"
-                        allowFullScreen
-                    ></iframe>
-                </Col>
+                    <Col>
+                        <iframe
+                            title="Google Map Street View"
+                            src={streetViewURL}
+                            width="900"
+                            height="500"
+                            frameborder="0"
+                            style={{ border: 0 }}
+                            referrerpolicy="no-referrer-when-downgrade"
+                            allowFullScreen
+                        ></iframe>
+                    </Col>
 
-            </Row>
+                </Row>
 
-        </Container >
+            </Container >
 
         </>
 

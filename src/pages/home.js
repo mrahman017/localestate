@@ -46,7 +46,8 @@ const HomePage = () => {
         }
     };
 
-    const [propertyData, setPropertyData] = useState(JSON.parse(window.localStorage.getItem('storedData')));
+    const initialPropertyData = JSON.parse(window.localStorage.getItem('storedData')) || [];
+    const [propertyData, setPropertyData] = useState(initialPropertyData);
 
     // Load propertyData from localStorage on component mount
     useEffect(() => {
@@ -59,11 +60,11 @@ const HomePage = () => {
 
     }, []);
 
-     // Save propertyData to localStorage whenever it changes
-     useEffect(() => {
-        
+    // Save propertyData to localStorage whenever it changes
+    useEffect(() => {
+
         window.localStorage.setItem('storedData', JSON.stringify(propertyData));
-        
+
     }, [propertyData]);
 
 
@@ -101,7 +102,7 @@ const HomePage = () => {
             console.log("passing results into the savePropertyData")
 
             //set the propetydata to show the grid
-            if(propertyData.length > 0 && propertyData !== null){
+            if (propertyData.length > 0 && propertyData !== null) {
                 setPropertyData(propertyData)
 
                 //console.log(propertyData)
@@ -124,6 +125,24 @@ const HomePage = () => {
 
         fetchData();
     };
+
+
+    // const fetchFavorites = async () => {
+    //     try {
+    //         const response = await fetch('http://localhost:5000/getfavorites?firebaseuid='+firebaseuid);
+    //         if (response.ok) {
+    //             const result = await response.json();
+    //             console.log(result);
+    //             setFavoriteData(result.favorites);
+    //         } else {
+    //             throw new Error('Failed to fetch favorites');
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // };
+
+    
 
     const navigate = useNavigate();
     const handlePropertyClick = (property) => {
@@ -208,17 +227,18 @@ const HomePage = () => {
 
             </Container>
 
-            
-            {propertyData.length >0 && (
+
+            {propertyData.length > 0 && (
                 <Container className="mt-4">
                     <h1 className='headings'>Your Search</h1>
                     {/* get the properties and see if any is clicked */}
-                    <PropertyGrid properties={propertyData} onPropertyClick={handlePropertyClick}/>
+                    <PropertyGrid properties={propertyData} onPropertyClick={handlePropertyClick} />
                 </Container>
             )}
 
+            
 
-
+            
         </section>
     );
 
